@@ -1,0 +1,178 @@
+
+#divHeader {
+
+    position : absolute;
+    position : fixed;
+    height : 30px;
+    width : 100%;
+    background-color : #819FF7;
+    color : #FFFFFF;
+    font-weight : bold;
+    font-size : 24;
+    padding-top: 5px;
+    top : 0;
+
+}
+
+#divHeader a {
+
+    color : #E0F2F7;
+
+}
+
+#divBody {
+
+    margin-top : 2%;
+    align : center;
+    margin-bottom : 20px;
+
+}
+
+table {
+
+    margin-right : auto;
+    margin-left : auto;
+    margin-top : 5%;
+
+}
+
+td {
+
+    width : 200px;
+    padding-left : 5px;
+
+}
+
+input[type="text"] {
+    margin-top : 5px;
+}
+
+#divHeader a:hover {
+    text-decoration : none;
+    color : #FFFFFF;
+}
+
+#suggestion {
+
+    float : right;
+    text-align : center;
+    width : 30%;
+    height : 80%;
+    margin-top : 0%;
+    position : relative;
+    padding : 10px;
+    right : 20px;
+    position : fixed;
+
+}
+
+#suggestion span {
+
+    font-size : 30;
+    padding : 20px;
+    margin : 10px;
+    border : solid black;
+    border-radius : 5px;
+    display : inline-block;
+
+}
+
+
+#menu {
+
+    float : left;
+    text-align : center;
+    width : 30%;
+    height : 80%;
+    margin-top : 0%;
+    position : relative;
+    padding : 10px;
+    margin-left : 20px;
+    position : fixed;
+
+}
+
+#divFail {
+
+    margin-right : auto;
+    margin-left : auto;
+    display : none;
+    text-align : center;
+
+}
+
+#divResult {
+
+    margin-right : auto;
+    margin-left : auto;
+    text-align : center;
+
+}
+
+
+.menuSpan {
+
+    font-size : 20;
+    padding : 0px;
+    margin : 0px;
+    border : none;
+    border-radius : 0px;
+    display : inline;
+    color : red;
+
+}
+
+#divFooter {
+    
+    position : absolute;
+    position : fixed;
+    background-color : #819FF7;
+    bottom : 0px;
+    width : 100%;
+    height : 20px;
+    text-align : center;
+    padding : 5px;
+
+}
+
+
+#divFooter a {
+
+    text-decoration : none;
+    color : #FFFFFF;
+
+}
+
+
+#divLoad {
+
+    text-align : center;
+    position : absolute;
+    margin : 48%;
+    margin-top : 20%;
+
+}
+
+
+#homeLink a{
+
+    margin : 20px;
+    font-size : 40px;
+    background-color : #EBEBEB;
+    border-radius : 5px;
+    padding : 15px;
+    text-decoration : none;
+    font-weight : bold;
+    font-style : Arial;
+
+}
+
+#div-ads-footer {
+    margin-top: 100px;
+}
+
+
+
+
+
+
