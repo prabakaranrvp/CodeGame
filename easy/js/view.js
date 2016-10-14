@@ -57,7 +57,7 @@ function showAnswer() {
 function displayWin(result,txt,chance) {
 
     window.clearTimeout(SD);
-    result.innerHTML = "<b>Wow! It's Correct!</b>";
+    result.innerHTML = "<b>Wow! It's Correct! It's <a href='http://www.thefreedictionary.com/"+txt.value+"'>" + txt.value + "</a></b>";
     result.style.color = "green";
     txt.disabled = true;
     txt.style.border = "solid black";
