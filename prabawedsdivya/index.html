@@ -70,7 +70,7 @@
 							<div class="col-md-10 col-md-offset-1">
 								<div class="animate-box">
 									<h1>The Wedding</h1>
-									<h2>Prabakaran &amp; Divyabhrathi</h2>
+									<h2>Prabakaran &amp; Divyabharathi</h2>
 									<p><span>08 July 2018</span></p>
 								</div>
 							</div>
@@ -146,6 +146,19 @@
 			</div>
 		</div>
 
+		<div id="fh5co-countdown">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center animate-box">
+					<p class="countdown">
+						<span id="days"></span>
+						<span id="hours"></span>
+						<span id="minutes"></span>
+						<span id="seconds"></span>
+					</p>
+				</div>
+			</div>
+		</div>
+
 		<div id="fh5co-started" style="background-image:url(images/cover_bg_2.jpg);" data-stellar-background-ratio="0.5" data-stellar-horizontal-offset="50">
 		<div class="overlay"></div>
 			<div class="container">
@@ -178,19 +191,6 @@
 			</div>
 		</div>
 
-		<div id="fh5co-countdown">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center animate-box">
-					<p class="countdown">
-						<span id="days"></span>
-						<span id="hours"></span>
-						<span id="minutes"></span>
-						<span id="seconds"></span>
-					</p>
-				</div>
-			</div>
-		</div>
-
 		<footer>
 			<div id="footer">
 				<div class="container">
@@ -212,15 +212,19 @@
 			</div>
 		</footer>
 
-		<div title="Add to Calendar" class="addeventatc">
-    Add to Calendar
-    <span class="start">04/27/2018 08:00 AM</span>
-    <span class="end">04/27/2018 10:00 AM</span>
-    <span class="timezone">America/Los_Angeles</span>
-    <span class="title">Summary of the event</span>
-    <span class="description">Description of the event</span>
-    <span class="location">Location of the event</span>
-</div>
+		<a href="https://goo.gl/maps/zY8eibQ1Uz22" id="get-location" target="_blank"><i class="icon-location"></i><span>Get Directions</span></a>
+
+		<div title="Add to Calendar" class="addeventatc" data-dropdown-y="up" aria-expanded="false" aria-haspopup="true" tabindex="0" >
+				<i class="icon-calendar"></i>
+		    <span class="start">07/08/2018 09:00 AM</span>
+		    <span class="end">07/08/2018 11:00 AM</span>
+		    <span class="title">Prabakaran Wed Divyabharathi</span>
+		    <span class="description">The Wedding Ceremony Of Prabakaran Raja Weds Divyabharathi Gokulakrishnan</span>
+		    <span class="location">Raya Mahal, Kumbakonam</span>
+				<span class="alarm_reminder">1440</span>
+				<span class="alarm_reminder">60</span>
+		</div>
+	<a style="display:none;" id="lgcal" ng-href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=Prabakaran weds Divyabharathi&amp;dates=20180708T090000/20180708T110000&amp;details= &amp;location=&amp;trp=false&amp;sprop=&amp;sprop=name:" target="_blank" rel="nofollow" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=Prabakaran weds Divyabharathi&amp;dates=20180708T090000/20180708T110000&amp;details= &amp;location=&amp;trp=false&amp;sprop=&amp;sprop=name:">Google Calendar</a>
 
 	</div>
 	<!-- END fh5co-page -->
@@ -236,7 +240,42 @@
 	<script>
 			$(window).scroll(function(x,y) {
 					document.querySelectorAll(".fh5co-hero .fh5co-cover")[0].style.backgroundPosition = "center " + (window.scrollY/2) + "px";
+					// console.log(scrollY);
+					if(scrollY < 100) {
+							$("#addeventatc1").addClass("no-visible");
+					} else {
+						$("#addeventatc1").removeClass("no-visible");
+					}
 			});
+			window.addeventasync = function(){
+			    addeventatc.settings({
+			        appleical  : {show:true, text:"Apple Calendars"},
+			        google     : {show:true, text:"Google <em>(online)</em>"},
+			        outlook    : {show:true, text:"Outlook"},
+			        outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
+			        yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
+			    });
+			};
+
+			$(document).ready(function() {
+					$("#addeventatc").click(function() {
+							console.log("tests")
+							$("#addeventatc1-google").remove();
+					});
+			});
+
+			window.addeventasync = function(){
+    			addeventatc.register('button-click', function(obj){
+							$("#addeventatc1-google").remove();
+							if(!$("#local-google").get(0)) {
+									$("#addeventatc1-drop").prepend('<span role="menuitem" class="ategoogle" id="local-google">Google / Andriod</span>').off("click");
+									$("#local-google").click(function(event) {
+											$("#lgcal")[0].click();
+									});
+							}
+    			});
+			};
+
 	</script>
 
 
