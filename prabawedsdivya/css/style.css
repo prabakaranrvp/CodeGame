@@ -1274,7 +1274,7 @@ div#addeventatc1 {
     padding: 15px;
     background-color: #f16365;
     position: fixed;
-    bottom: 5%;
+    bottom: 3%;
     right: 5%;
     border-color: #e2020229;
     box-shadow: #9c5859b0 0px 0px 10px;
@@ -1288,7 +1288,7 @@ div#addeventatc1 {
     padding: 11px 15px;
     background-color: #4285F4;
     position: fixed;
-    bottom: 5%;
+    bottom: 3%;
     left: 5%;
     border-color: #4285F4;
     box-shadow: #4e86e2 0px 0px 10px;
@@ -1300,16 +1300,13 @@ div#addeventatc1 {
 
 #get-location span {
   padding: 0 10px;
-  animation-name: showus;
-  animation-duration: 0.5s;
-  animation-delay: 2s;
+  transition: 0.5s ease-out;
   display: inline-block;
   vertical-align: middle;
 }
 
-@keyframes showus {
-    from {margin-left: 0}
-    to {margin-left: -200px;}
+#get-location span.showus {
+    margin-left: -200px;
 }
 
 .no-visible {
@@ -1327,4 +1324,21 @@ div#addeventatc1:active {
 
 span#addeventatc1-drop {
   top:-200px!important;
+}
+
+.fh5co-cover .display-tc h2 {
+  font-family: 'Courgette', cursive;
+  font-family: 'Cookie', cursive;
+  font-family: 'Caveat', cursive;
+  font-family: 'Sacramento', cursive;
+  font-size: 80px;
+}
+
+
+h2, h3, h4 {
+  font-family: 'Sacramento', cursive;
+}
+
+.heading-section h2 {
+  font-size: 70px;
 }
