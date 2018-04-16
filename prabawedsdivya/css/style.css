@@ -1342,3 +1342,52 @@ h2, h3, h4 {
 .heading-section h2 {
   font-size: 70px;
 }
+
+
+#fh5co-couple .amp-center {
+  animation-name: beat;
+  animation-duration: 1.2s;
+  animation-delay: 0;
+  animation-iteration-count: infinite;
+  /* animation: beat 1s ease infinite; */
+  transition: 0.5s linear;
+}
+
+@keyframes beat {
+   0% {transform: scale(1);}
+   50% {transform: scale(1.15);}
+   100% {transform: scale(1);}
+}
+
+.fa-phone {
+  transform: rotate(90deg);
+}
+
+
+#footer h2 {
+  font-family: sans-serif;
+  font-size: 30px;
+}
+
+#fh5co-guest .groom-list {
+  text-align: center;
+}
+
+#fh5co-guest .bride-list {
+  text-align: center;
+}
+
+#fh5co-guest .row-bottom-padded-lg > div {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 4%;
+  float: none;
+}
+
+
+#fh5co-guest .bride-list > div {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 4%;
+  float: none;
+}
