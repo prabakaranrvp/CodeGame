@@ -1391,3 +1391,20 @@ h2, h3, h4 {
   padding: 0 4%;
   float: none;
 }
+
+@media screen and (max-width: 768px) {
+  .fh5co-cover .container {
+    padding: 0;
+  }
+  .fh5co-cover .container h2 {
+    font-size: 4em;
+  }
+
+  #fh5co-guest img {
+    max-width: 200px;
+  }
+}
+
+#fh5co-couple {
+  padding-bottom: 0;
+}
