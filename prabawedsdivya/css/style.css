@@ -1356,9 +1356,9 @@ h2, h3, h4 {
 }
 
 @keyframes beat {
-   0% {transform: scale(1); color: #ff0072;}
-   50% {transform: scale(1.15); color: rgba(255,0,0,1);}
-   100% {transform: scale(1); color: #ff0072;}
+   0% {transform: scale(1); color: #ff0072; .heart { background-color: #ff0072;}}
+   50% {transform: scale(1.15); color: rgba(255,0,0,1); .heart { background-color: rgba(255,0,0,1);}}
+   100% {transform: scale(1); color: #ff0072; .heart { background-color: #ff0072;}}
 }
 
 .fa-phone {
@@ -1422,14 +1422,36 @@ h2, h3, h4 {
   font-family: cursive;
 }
 
-#page-loader .load-info i {
-  font-size: 3em;
+#page-loader .load-info.load-symbol {
   animation-name: beat;
   animation-duration: 1.2s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
   transition: 0.5s linear;
   margin: 0 25px;
+}
+
+#page-loader .load-info .heart  {
+  background-color: red;
+  height: 30px;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+
+.heart:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
 }
 
 #page-loader .load-info {
@@ -1456,24 +1478,18 @@ body.page-loaded #fh5co-wrapper {
     font-size: 2em;
 }
 
-@keyframes stripes {
-  100% {
-    background-position: 0 -50px;
-  }
-}
-
 @keyframes unload {
   0% {
     transform: scale(1);
     opacity: 1;
   }
   98% {
-    transform: scale(98);
+    transform: scale(190);
     opacity: 0.1;
     z-index: 1;
   }
   100% {
-    transform: scale(100);
+    transform: scale(200);
     opacity: 0;
     display: none;
     z-index: -1;
