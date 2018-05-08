@@ -1452,6 +1452,10 @@ body.page-loaded #fh5co-wrapper {
   opacity: 1;
 }
 
+.fh5co-social-icons > a i {
+    font-size: 2em;
+}
+
 @keyframes stripes {
   100% {
     background-position: 0 -50px;
@@ -1466,10 +1470,12 @@ body.page-loaded #fh5co-wrapper {
   98% {
     transform: scale(98);
     opacity: 0.1;
+    z-index: 1;
   }
   100% {
     transform: scale(100);
     opacity: 0;
     display: none;
+    z-index: -1;
   }
 }
