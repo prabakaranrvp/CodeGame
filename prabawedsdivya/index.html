@@ -225,21 +225,7 @@
 			</div>
 		</div>
 
-		<div id="fh5co-started" style="background-image:url(images/cover_bg_2.jpg);" data-stellar-background-ratio="0.5" data-stellar-horizontal-offset="50">
-		<div class="overlay"></div>
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center heading-section">
-						<h2>You are invited!</h2>
-					</div>
-				</div>
-				<div class="row animate-box">
-					<div class="col-md-10 col-md-offset-1">
 
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<footer>
 			<div id="footer">
@@ -279,7 +265,12 @@
 
 	</div>
 	<!-- END fh5co-wrapper -->
-
+	<div id="page-loader">
+		<div class="load-info">Praba</div>
+		<div class="load-info"><i class="fas fa-heart"></i></div>
+		<div class="load-info">Divya</div>
+		<div class="load-sub-info">inviting you...</div>
+	</div>
 	<!-- Google Map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<!-- jQuery -->
@@ -312,6 +303,10 @@
 							console.log("tests")
 							$("#addeventatc1-google").remove();
 					});
+			});
+			
+			$(window).on("load", function(){
+				$("body").addClass("page-loaded");
 			});
 
 			window.addeventasync = function(){

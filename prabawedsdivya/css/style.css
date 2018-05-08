@@ -899,7 +899,7 @@ figure {
 
 #footer {
   background: #F69D9D;
-  padding: 60px 0 40px;
+  padding: 60px 0 60px;
 }
 
 #footer p {
@@ -958,6 +958,8 @@ figure {
 #fh5co-wrapper {
   overflow-x: hidden;
   position: relative;
+  opacity: 0;
+  transition: 0.2s ease-in;
 }
 
 .fh5co-offcanvas {
@@ -1354,9 +1356,9 @@ h2, h3, h4 {
 }
 
 @keyframes beat {
-   0% {transform: scale(1);}
-   50% {transform: scale(1.15);}
-   100% {transform: scale(1);}
+   0% {transform: scale(1); color: #ff0072;}
+   50% {transform: scale(1.15); color: rgba(255,0,0,1);}
+   100% {transform: scale(1); color: #ff0072;}
 }
 
 .fa-phone {
@@ -1407,4 +1409,67 @@ h2, h3, h4 {
 
 #fh5co-couple {
   padding-bottom: 0;
+}
+
+#page-loader {
+  position: fixed;
+  left: 0;
+  top: 40%;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+  color: red;
+  font-family: cursive;
+}
+
+#page-loader .load-info i {
+  font-size: 3em;
+  animation-name: beat;
+  animation-duration: 1.2s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  transition: 0.5s linear;
+  margin: 0 25px;
+}
+
+#page-loader .load-info {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+
+#page-loader .load-sub-info {
+    margin-top: 10px;
+    font-size: 0.75em;
+}
+
+body.page-loaded #page-loader {
+   animation: 0.8s unload 0s 1 linear;
+   animation-fill-mode: forwards;
+}
+
+body.page-loaded #fh5co-wrapper {
+  opacity: 1;
+}
+
+@keyframes stripes {
+  100% {
+    background-position: 0 -50px;
+  }
+}
+
+@keyframes unload {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  98% {
+    transform: scale(98);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(100);
+    opacity: 0;
+    display: none;
+  }
 }
