@@ -959,7 +959,7 @@ figure {
   overflow-x: hidden;
   position: relative;
   opacity: 0;
-  transition: 0.2s ease-in;
+  transition: 0.1s ease-in;
 }
 
 .fh5co-offcanvas {
@@ -1399,7 +1399,7 @@ h2, h3, h4 {
     padding: 0;
   }
   .fh5co-cover .container h2 {
-    font-size: 4em;
+    font-size: 3.5em;
   }
 
   #fh5co-guest img {
@@ -1466,8 +1466,12 @@ h2, h3, h4 {
 }
 
 body.page-loaded #page-loader {
-   animation: 0.8s unload 0s 1 linear;
+   animation: 2s unload 0s 1 linear;
    animation-fill-mode: forwards;
+}
+
+body.page-loaded #page-loader .load-info.load-symbol {
+    animation: none;
 }
 
 body.page-loaded #fh5co-wrapper {
@@ -1482,16 +1486,11 @@ body.page-loaded #fh5co-wrapper {
   0% {
     transform: scale(1);
     opacity: 1;
-  }
-  98% {
-    transform: scale(190);
-    opacity: 0.1;
     z-index: 1;
   }
   100% {
-    transform: scale(200);
-    opacity: 0;
-    display: none;
+    transform: scale(140) translateY(35%);
     z-index: -1;
+    opacity: 0;
   }
 }
