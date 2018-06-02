@@ -1494,3 +1494,19 @@ body.page-loaded #fh5co-wrapper {
     opacity: 0;
   }
 }
+
+.col-md-12.btn-holder {
+    text-align: center;
+    padding: 30px;
+}
+
+#btn-get-location {
+    padding: 15px 25px;
+    background: #4285f4;
+    color: #fff;
+    border-radius: 25px;
+}
+
+#btn-get-location span {
+    padding-left: 10px;
+}
