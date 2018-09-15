@@ -1266,7 +1266,7 @@ figure {
   background: url(../images/hourglass.svg) center no-repeat #222222;
 }
 
-#gmap {
+.gmap {
   min-height: 300px;
   width: 100%;
 }
