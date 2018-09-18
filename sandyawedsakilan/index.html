@@ -145,10 +145,10 @@
 				</div>
 				<div id="before_Mrg" class="hide row">
 					<div class="col-md-12">
-						<iframe class="gmap" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15668.377628032136!2d79.3785412!3d10.956241!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x44d446358e22ea4!2sRaya+Mahal!5e0!3m2!1sen!2sin!4v1523470185667" frameborder="0" style="border:0" allowfullscreen></iframe>
+						<iframe class="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.966140735507!2d78.610385614793!3d9.853207692951884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00f8670283ea03%3A0xdfe351ad535eb3c2!2sJebathottam+Ministries!5e0!3m2!1sen!2sin!4v1537240866395" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 					</div>
 					<div class="col-md-12 btn-holder">
-						<a href="https://www.google.com/maps/dir/?api=1&destination=Raya%27s+Executive+Homes,+Raya+Mahal,+73,+Gandhi+Adigal+Salai,+Kumbakonam,+612001" id="btn-get-location" target="_blank"><i class="fas fa-map-marker-alt"></i><span>Get Directions</span></a>
+						<a href="https://www.google.com/maps/dir/?api=1&destination=Jebathottam+Ministries,+Jebathottam+-+Prayer+Garden,+Kalayarkoil,+Tamil+Nadu+630551" id="btn-get-location" target="_blank"><i class="fas fa-map-marker-alt"></i><span>Get Directions</span></a>
 					</div>
 				</div>
 				<div id="after_Mrg" class="hide row">
@@ -194,9 +194,9 @@
 			</div>
 		</footer>
 
-		<a href="https://goo.gl/maps/zY8eibQ1Uz22" id="get-location" target="_blank"><i class="fas fa-map-marker-alt"></i><span class="showus">Get Directions</span></a>
+		<a href="https://www.google.com/maps/dir/?api=1&destination=Jebathottam+Ministries,+Jebathottam+-+Prayer+Garden,+Kalayarkoil,+Tamil+Nadu+630551" id="get-location" target="_blank"><i class="fas fa-map-marker-alt"></i><span class="showus">Get Directions</span></a>
 
-		<div title="Add to Calendar" class="addeventatc" data-dropdown-y="up" aria-expanded="false" aria-haspopup="true" tabindex="0" >
+		<div title="Add to Calendar" class="addeventatc before_Mrg" data-dropdown-y="up" aria-expanded="false" aria-haspopup="true" tabindex="0" >
 				<i class="far fa-calendar-plus"></i>
 		    <span class="start">09/29/2018 10:00 AM</span>
 		    <span class="end">09/29/2018 12:30 AM</span>
@@ -206,7 +206,18 @@
 				<span class="alarm_reminder">1440</span>
 				<span class="alarm_reminder">60</span>
 		</div>
-	<a style="display:none;" id="lgcal" ng-href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=Akilan weds Sandya&amp;dates=20180929T100000/20180929T123000&amp;details= &amp;location=Jebathotta Jeyageetham, Sivagangai&amp;trp=false&amp;sprop=&amp;sprop=name:" target="_blank" rel="nofollow" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=Akilan weds Sandya&amp;dates=20180929T100000/20180929T123000&amp;details= &amp;location=Jebathotta Jeyageetham, Sivagangai&amp;trp=false&amp;sprop=&amp;sprop=name:">Google Calendar</a>
+		<div title="Add to Calendar" class="addeventatc after_Mrg" data-dropdown-y="up" aria-expanded="false" aria-haspopup="true" tabindex="0" >
+				<i class="far fa-calendar-plus"></i>
+		    <span class="start">10/07/2018 6:00 PM</span>
+		    <span class="end">10/07/2018 9:00 PM</span>
+		    <span class="title">Akilan Wed Sandya - Reception</span>
+		    <span class="description">The Reception Ceremony Of Akilan Weds Sandya</span>
+		    <span class="location">Food Village, Injambakkam, Chennai</span>
+				<span class="alarm_reminder">1440</span>
+				<span class="alarm_reminder">60</span>
+		</div>
+	<a style="display:none;" id="lgcal" class="before_Mrg" target="_blank" rel="nofollow" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=Akilan weds Sandya&amp;dates=20180929T100000/20180929T123000&amp;details= &amp;location=Jebathotta Jeyageetham, Sivagangai&amp;trp=false&amp;sprop=&amp;sprop=name:">Google Calendar</a>
+	<a style="display:none;" id="lgcal" class="after_Mrg" target="_blank" rel="nofollow" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=Akilan weds Sandya&amp;dates=20181007T180000/20181007T21000&amp;details= &amp;location=Food Village, Injambakkam&amp;trp=false&amp;sprop=&amp;sprop=name:">Google Calendar</a>
 
 	</div>
 	<!-- END fh5co-page -->
@@ -236,15 +247,6 @@
 					$("#get-location span").removeClass("showus");
 				}
 			});
-			window.addeventasync = function(){
-			    addeventatc.settings({
-			        appleical  : {show:true, text:"Apple Calendars"},
-			        google     : {show:true, text:"Google <em>(online)</em>"},
-			        outlook    : {show:true, text:"Outlook"},
-			        outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
-			        yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
-			    });
-			};
 			var mrgEndDate = new Date("09/29/2018 12:30");
 
 			$(document).ready(function() {
@@ -255,10 +257,23 @@
 				if(mrgEndDate > (new Date())) {
 					$("#before_Mrg").removeClass("hide");
 					$("#after_Mrg").remove();
+					$(".after_Mrg").remove();
 				} else {
 					$("#after_Mrg").removeClass("hide");
+					$("#get-location").attr("href", $("#after_Mrg a")[0].href)
 					$("#before_Mrg").remove();
+					$(".before_Mrg").remove();
 				}
+				
+				window.addeventasync = function(){
+				    addeventatc.settings({
+				        appleical  : {show:true, text:"Apple Calendars"},
+				        google     : {show:true, text:"Google <em>(online)</em>"},
+				        outlook    : {show:true, text:"Outlook"},
+				        outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
+				        yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
+				    });
+				};
 			});
 
 			$(window).on("load", function(){
