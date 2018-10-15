@@ -83,8 +83,8 @@ h4 {
 
 
 #get-direction, #get-address {
-    height: 150px;
-    padding: 40px;
+    height: 100px;
+    padding: 5px;
     box-sizing: border-box;
     background-color: #4285F4;
     color: #fff;
