@@ -1458,6 +1458,7 @@ h2, h3, h4 {
     display: inline-block;
     vertical-align: middle;
     font-size: 1.5em;
+    transition: 0.5s ease-in-out;
 }
 
 #page-loader .load-sub-info {
@@ -1466,12 +1467,20 @@ h2, h3, h4 {
 }
 
 body.page-loaded #page-loader {
-   animation: 2s unload 0s 1 linear;
-   animation-fill-mode: forwards;
+   /* animation: 1s unload 0s 1 ease-in;
+   animation-fill-mode: forwards; */
+}
+
+
+body.page-loaded #page-loader .load-info, body.page-loaded #page-loader .load-sub-info {
+  opacity: 0;
+  z-index: -1;
 }
 
 body.page-loaded #page-loader .load-info.load-symbol {
-    animation: none;
+    /* animation: none; */
+    animation: 1.75s unload 0s 1 ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 body.page-loaded #fh5co-wrapper {
@@ -1488,7 +1497,7 @@ body.page-loaded #fh5co-wrapper {
     opacity: 1;
     z-index: 1;
   }
-  100% {
+  99% {
     transform: scale(140) translateY(35%);
     z-index: -1;
     opacity: 0;
@@ -1517,18 +1526,24 @@ body.page-loaded #fh5co-wrapper {
     opacity: 0;
     transition: 1s ease-in-out;
     transform: translateX(-85%);
-    animation: 1s 3s openDelayed ease-in-out forwards;
 }
 
 .unhidden {
   display: inline-block;
   transition: 1s ease-in-out;
-  /* transform: translateX(30%); */
-  animation: 1s 3s unOpenDelayed ease-in-out forwards;
 }
 
 .unhidden.bride {
   transform: translateX(70%);
+}
+
+
+body.page-loaded .unhidden {
+  animation: 1s 1.75s unOpenDelayed ease-in-out forwards;
+}
+
+body.page-loaded .delayed-open {
+  animation: 1s 1.75s openDelayed ease-in-out forwards;
 }
 
 @keyframes openDelayed {
