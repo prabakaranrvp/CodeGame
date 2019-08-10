@@ -1469,6 +1469,7 @@ h2, h3, h4 {
 body.page-loaded #page-loader {
    /* animation: 1s unload 0s 1 ease-in;
    animation-fill-mode: forwards; */
+   /* animation: 0.1s 1.74s hideloader linear forwards; */
 }
 
 
@@ -1481,10 +1482,16 @@ body.page-loaded #page-loader .load-info.load-symbol {
     /* animation: none; */
     animation: 1.75s unload 0s 1 ease-in-out;
     animation-fill-mode: forwards;
+    /* width: 0;
+    height: 0;
+    top: -100%;
+    left: -100%;
+    z-index: -1;  */
 }
 
 body.page-loaded #fh5co-wrapper {
-  opacity: 1;
+  /* opacity: 1; */
+  animation: 1.25s loadIndex ease-in-out forwards;
 }
 
 .fh5co-social-icons > a i {
@@ -1498,9 +1505,31 @@ body.page-loaded #fh5co-wrapper {
     z-index: 1;
   }
   100% {
-    transform: scale(140) translateY(35%);
+    transform: scale(140);
     z-index: -1;
     opacity: 0;
+  }
+}
+
+@keyframes hideloader {
+  0% {
+    display: block;
+  }
+  100% {
+    display: none;
+  }
+}
+
+@keyframes loadIndex {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    z-index: 0;
+  }
+  100% {
+    z-index: 1;
+    opacity: 1;
   }
 }
 
