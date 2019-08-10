@@ -93,12 +93,12 @@
 				<div class="row row-bottom-padded-md animate-box">
 					<div class="col-md-6 col-md-offset-3 text-center">
 						<div class="col-md-5 col-sm-5 col-xs-5 nopadding">
-							<img src="images/groom.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+							<img src="images/groom.jpg" class="img-responsive" alt="Manikandan">
 							<h3>Mani</h3>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 class="amp-center"><i class="fas fa-heart"></i></h2></div>
 						<div class="col-md-5 col-sm-5 col-xs-5 nopadding">
-							<img src="images/bride.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+							<img src="images/bride.jpg" class="img-responsive" alt="Jessica">
 							<h3>Jessi</h3>
 						</div>
 					</div>
@@ -161,6 +161,19 @@
 				</div>
 			</div>
 		</div>
+    
+    <div id="fh5co-family" class="fh5co-section-gray">
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-12 text-center heading-section">
+							<h2>Expecting your presence</h2>
+							<img src="images/family.jpg" class="img-responsive" alt="Manikandan & Jessica Family">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div id="fh5co-countdown">
 			<div class="row">
@@ -214,42 +227,11 @@
 	<script>
 			$(window).scroll(function(x,y) {
 				document.querySelectorAll(".fh5co-hero .fh5co-cover")[0].style.backgroundPosition = "center " + (window.scrollY/2) + "px";
-				// console.log(scrollY);
 				if(scrollY < 100) {
-						// $("#addeventatc1").addClass("no-visible");
 						$("#get-location span").addClass("showus");
 				} else {
-					// $("#addeventatc1").removeClass("no-visible");
 					$("#get-location span").removeClass("showus");
 				}
-			});
-			// var mrgEndDate = new Date("09/29/2019 12:30");
-
-			$(document).ready(function() {
-				// $("#addeventatc").click(function() {
-				// 	$("#addeventatc1-google").remove();
-				// });
-				// console.log(mrgEndDate < (new Date()))
-				// if(mrgEndDate > (new Date())) {
-				// 	$("#before_Mrg").removeClass("hide");
-				// 	$("#after_Mrg").remove();
-				// 	$(".after_Mrg").remove();
-				// } else {
-				// 	$("#after_Mrg").removeClass("hide");
-				// 	$("#get-location").attr("href", $("#after_Mrg a")[0].href)
-				// 	$("#before_Mrg").remove();
-				// 	$(".before_Mrg").remove();
-				// }
-        // 
-				// window.addeventasync = function(){
-				//     addeventatc.settings({
-				//         appleical  : {show:true, text:"Apple Calendars"},
-				//         google     : {show:true, text:"Google <em>(online)</em>"},
-				//         outlook    : {show:true, text:"Outlook"},
-				//         outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
-				//         yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
-				//     });
-				// };
 			});
 
 			$(window).on("load", function(){

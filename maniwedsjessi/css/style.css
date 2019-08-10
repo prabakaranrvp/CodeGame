@@ -610,12 +610,12 @@ figure {
 
 #fh5co-countdown .countdown {
   margin-bottom: 0;
-  font-size: 80px;
+  font-size: 2em;
   color: #fff;
 }
 
 #fh5co-countdown .countdown span {
-  margin: 0 30px;
+  margin: 0 0.5em;
   display: inline-block;
   font-family: "Montez", cursive;
 }
