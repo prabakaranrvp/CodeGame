@@ -1,0 +1,151 @@
+$primary-bg: #282c34;
+$header-bg: #626364;
+$header-secondary: #393a3a;
+$link-color: #61dafb;
+
+body {
+  background-color: $primary-bg;
+  color: #fff;
+}
+
+.App {
+  text-align: center;
+  width: 100vw;
+  font-family: 'Catamaran', sans-serif;
+  font-size: 1em;
+}
+
+.link {
+  border: none;
+  background: none;
+  color: $link-color;
+  cursor: pointer;
+  
+  &:hover {
+    color: darken($link-color, 25%);
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.App-header {
+  background-color: $header-bg;
+  height: 8vh;
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: 0.35s ease-in-out;
+  
+  div.coins, div.choice {
+    flex: 1;
+    // background: rgba(255,255,255,0.1);
+    // border-radius: 25px;
+    padding: 0.2em 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 55%,rgba(255, 255, 255, 0.1) 50%,rgba(0,0,0,0) 47%, rgba(0,0,0,0) 48%);
+    font-size: 1.25em;
+  }
+  div.title {
+    flex: 8;
+    font-size: 1.5em;
+  }
+  .sub-title {
+    display: none;
+  }
+  
+}
+
+.App.gamemode-off {
+  .App-header {
+    height: 100vh;
+    flex-direction: column;
+    background-color: $header-secondary;
+    
+    div.coins, div.choice {
+      display: none;
+    }
+    div {
+      flex: none;
+    }
+    div.title {
+      font-size: 3em;
+    }
+    .sub-title {
+      display: block;  
+      .link{
+        font-size: 1.25em;
+        margin: 0 10px;
+      }
+    }
+  }
+  .game {
+    display: none;
+  }
+}
+
+
+.game {
+  max-width: 350px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  position: relative;
+  
+  .game__input-container {
+    width: 100%;
+    position: fixed;
+    bottom: 2em;
+    left: 0;
+    
+    
+    
+      input  {
+        outline: 0;
+        // border: 0;
+        display: block;
+        border: 1px solid #ddd;
+        padding: 5px 10px;
+        border-radius: 2px;
+        transition: 0.2s ease-in-out;
+        box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+        font-size: 1em;
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 7em;
+        font-size: 1.5em;
+        letter-spacing: 0.5em;
+        margin: 5px auto;
+        text-align: center;
+        text-transform: uppercase;
+        
+        &:focus, &:active {
+          border-color: darken(#ddd,2%);
+          box-shadow: 5px 5px 7px 1px rgba(0,0,0,0.8);
+          // box-shadow: 3px 4px 6px 1px #444;
+          // margin-bottom: 3em;
+          margin-bottom: 1em;
+          left: 0;
+        }
+        
+        &::placeholder {
+            letter-spacing: 1px;
+            font-size: 0.75em;
+            text-transform: none;
+            text-align: left;
+        }
+      }
+  }
+}
+
+
+
+
+
+
+
