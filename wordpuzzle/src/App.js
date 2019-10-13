@@ -1,28 +1,7 @@
 import React from 'react';
 import Header from './layout/header.js'
 import './App.scss';
-
-const difficultyMapping = {
-  'easy': 4,
-  'medium': 5,
-  'hard': 6
-};
-
-const difficultyFileMapping = {
-  'easy': 'four.js',
-  'medium': 'four.js',
-  'hard': 'four.js'
-};
-
-const errorMessage = {
-  'usedGuess': 'You have already used this guess',
-  'minLength': {
-    'easy': 'Please enter a 4 letter word',
-    'medium': 'Please enter a 5 letter word',
-    'hard': 'Please enter a 6 letter word',
-  },
-  'validWord': 'Not a valid word'
-};
+import { DIFFICULTY_MAP, DIFFICULTY_FILE_MAP, ERROR_MSG } from './constants.js'
 
 export default class App extends React.Component {
   
@@ -36,7 +15,7 @@ export default class App extends React.Component {
       word: '',
       won: false,
       coins: parseInt(window.localStorage.getItem('coins')) || 0,
-      guessedWords: new Array(),
+      guessedWords: [],
       chances: 10,
       animateInputClass: 'animated',
       errorMsg: ''
@@ -45,8 +24,8 @@ export default class App extends React.Component {
   
   // Imports the words based on the difficulty level
   setGameMode(difficulty) {
-    import("./words/" + difficultyFileMapping[difficulty]).then(arrWords => {
-      this.words = arrWords.fourWords;
+    import("./words/" + DIFFICULTY_FILE_MAP[difficulty]).then(arrWords => {
+      this.words = arrWords.words;
       this.setState({
         gameMode: true,
         difficulty: difficulty,
@@ -88,11 +67,26 @@ export default class App extends React.Component {
       <div className={"App gamemode-" + (this.state.gameMode?"on":"off")}>
         <Header coins={this.state.coins} onStart={(difficulty) => {this.setGameMode(difficulty)}} reloadGame={()=>this.reloadGame()} />
         <div className="game">
-          <div>
-            {this.state.guessedWords.map((word, i) => {
-              return (<div key={i} class="animated fadeInUpBig fast delay-0s">{word} {this.guessResults[word].cow}-cow {this.guessResults[word].bull}-bull</div>)
-            })}
-          </div>
+            <div className="dummy"></div>
+            <div className="guess-container" >
+              {this.state.guessedWords.map((word, i) => {
+                return (
+                  <div key={i} className="guess" >
+                      <span className="element-inline-middle guess-result guess-cow">
+                        cow - {this.guessResults[word].cow}
+                      </span>
+                      <span className = "element-inline-middle guess-word"> 
+                        {word} 
+                      </span>
+                      <span className="element-inline-middle guess-result guess-bull">
+                        {this.guessResults[word].bull} - bull 
+                      </span>
+                      
+                  </div>
+                )
+              })}
+            </div>
+          
           {this.state.won? this.renderWonMessage() : this.renderInputContainer()}
         </div>
       </div>
@@ -113,7 +107,7 @@ export default class App extends React.Component {
   
   renderInput(chances) {
     if(chances > 0) {
-        return (<input id="txt-guess" class={this.state.animateInputClass} type="text" autoComplete="off" autoFocus={true} maxLength={difficultyMapping[this.state.difficulty]} placeholder="Your Guess..." onKeyUp={(e) => this.addGuess(e)} />);
+        return (<input id="txt-guess" className={this.state.animateInputClass} type="text" autoComplete="off" autoFocus={true} maxLength={DIFFICULTY_MAP[this.state.difficulty]} placeholder="Your Guess..." onKeyUp={(e) => this.addGuess(e)} />);
     } else if (this.state.coins >= 5) {
       return this.renderAddChances();
     } else {
@@ -129,7 +123,7 @@ export default class App extends React.Component {
   
   renderError(){
     if(this.state.errorMsg.length) {
-      return (<span class="animated fadeInDown fast">{this.state.errorMsg}</span>)
+      return (<span className="animated fadeInDown fast">{this.state.errorMsg}</span>)
     }
   }
 
@@ -145,18 +139,24 @@ export default class App extends React.Component {
   renderResult() {
     return (
       <div className="result">
-        You missed your chances! The word is 
-        <a href={`https://www.thefreedictionary.com/${this.state.word}`} target="_blank">
+        <span className="element-inline-middle">You missed your chances! The word is </span>
+        <a className="element-inline-middle" href={`https://www.thefreedictionary.com/${this.state.word}`} target="_blank">
           {this.state.word.toUpperCase()}
         </a>
-        <span onClick={(e) => this.reloadGame()}>Retry again?</span>
+        <div onClick={(e) => this.reloadGame()}>Retry again?</div>
       </div>
     )
+  }
+
+  componentDidUpdate() {
+    setTimeout(() => {
+      document.getElementsByClassName('guess-container')[0].scrollTop += 500;
+    }, 100);
   }
   
   addGuess(e) {
     if(e.keyCode === 13) {
-      let currGuess = document.getElementById('txt-guess').value;
+      let currGuess = document.getElementById('txt-guess').value.toLowerCase();
       if(this.validateGuess(currGuess)) {
         this.getBullCow(currGuess);
         let guessedWords = this.state.guessedWords;
@@ -186,7 +186,7 @@ export default class App extends React.Component {
       
       this.setState({
         animateInputClass: 'animated shake fast',
-        errorMsg: errorMessage[errorMsgKey]
+        errorMsg: ERROR_MSG[errorMsgKey]
       });
       setTimeout(() => {this.setState({animateInputClass: 'animated'})}, 600);
       return false;
@@ -204,7 +204,7 @@ export default class App extends React.Component {
   // If validation fails, it returns true. Else false
   validationRules(guess) {
     return {
-      minLength: (guess.trim().length < difficultyMapping[this.state.difficulty]),
+      minLength: (guess.trim().length < DIFFICULTY_MAP[this.state.difficulty]),
       validWord: (this.words.indexOf(guess) < 0),
       usedGuess: (this.state.guessedWords.indexOf(guess.trim()) > -1)
     }

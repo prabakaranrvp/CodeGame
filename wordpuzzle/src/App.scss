@@ -3,9 +3,16 @@ $header-bg: #626364;
 $header-secondary: #393a3a;
 $link-color: #61dafb;
 
+$cow-color: #c1c106;
+$bull-color: #07b862;
+
 body {
   background-color: $primary-bg;
   color: #fff;
+}
+
+#root {
+  position: fixed;
 }
 
 .App {
@@ -28,6 +35,15 @@ body {
   &:focus {
     outline: none;
   }
+}
+
+.element-inilne {
+  display: inline-block;
+}
+
+.element-inilne-middle {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 
@@ -89,21 +105,23 @@ body {
 
 
 .game {
-  max-width: 350px;
+  width: 95%;
+  max-width: 400px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 92vh;
   position: relative;
+
+  .dummy {
+    flex-grow: 1;
+  }
   
   .game__input-container {
     width: 100%;
-    position: fixed;
-    bottom: 2em;
-    left: 0;
-    
-    
+    margin-bottom: 100px;
+    box-sizing: border-box;
     
       input  {
         outline: 0;
@@ -141,8 +159,75 @@ body {
         }
       }
   }
+
+  .guess-{
+    
+    &container {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5em;
+      padding: 1em 0;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      text-transform: uppercase;
+
+
+      .guess {
+          margin: 0.25em;
+          padding: 0.25em;
+          box-sizing: border-box;
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+          transition: 0.2s ease-in-out;
+          animation: 0.2s addFromBottom ease-in-out forwards;
+      }
+    }
+
+    &word {
+      font-weight: bold;
+      margin: 0 0.75em;
+      width: 25%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    &result {
+      font-size: 0.9em;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      letter-spacing: 3px;
+    }
+
+    &cow {
+      color: $cow-color;
+    }
+
+    &bull {
+      color: $bull-color;
+    }
+    
+  }
 }
 
+
+@keyframes addFromBottom {
+  0% {
+    transform: translateY(300px);
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(150px);
+    height: auto;
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    height: auto;
+    opacity: 1;
+  }
+}
 
 
 
