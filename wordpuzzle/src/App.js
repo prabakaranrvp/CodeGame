@@ -17,6 +17,7 @@ export default class App extends React.Component {
       coins: parseInt(window.localStorage.getItem('coins')) || 0,
       guessedWords: [],
       chances: 10,
+      showResult: false,
       animateInputClass: 'animated',
       errorMsg: ''
     };
@@ -57,6 +58,7 @@ export default class App extends React.Component {
         guessedWords: [],
         won: false,
         chances: 10,
+        showResult: false
       });
 
     }
@@ -96,9 +98,16 @@ export default class App extends React.Component {
   renderInputContainer() {
     let chances = this.state.chances - this.state.guessedWords.length;
 
+    let chancesText = (<label htmlFor="txt-guess">
+                        You have <strong>{chances}</strong> chances left
+                      </label>);
+
+    if(chances === 0)
+      chancesText = (<label>You have used all your chances</label>);
+
     return (
       <div className="game__input-container">
-        <label htmlFor="txt-guess">You have {chances} chances left</label>
+        {chancesText}
         {this.renderInput(chances)}
         {this.renderError()}
       </div>
@@ -106,9 +115,19 @@ export default class App extends React.Component {
   }
   
   renderInput(chances) {
+    let maxLength = DIFFICULTY_MAP[this.state.difficulty];
     if(chances > 0) {
-        return (<input id="txt-guess" className={this.state.animateInputClass} type="text" autoComplete="off" autoFocus={true} maxLength={DIFFICULTY_MAP[this.state.difficulty]} placeholder="Your Guess..." onKeyUp={(e) => this.addGuess(e)} />);
-    } else if (this.state.coins >= 5) {
+        return (
+          <input id="txt-guess" 
+            className={this.state.animateInputClass} 
+            type="text" 
+            autoComplete="off" 
+            autoFocus={true} 
+            maxLength={maxLength} 
+            placeholder={`Guess ${maxLength} letter word`}
+            onKeyUp={(e) => this.addGuess(e)} />)
+        ;
+    } else if (this.state.coins >= 5 && !this.state.showResult) {
       return this.renderAddChances();
     } else {
       return this.renderResult();
@@ -117,21 +136,29 @@ export default class App extends React.Component {
 
   renderAddChances() {
     return (
-        <div onClick={(e) => this.addChance()}> Add 5 more chances for 5 coins </div>
+        <div> 
+          <span onClick={(e) => this.addChance()}>Add 5 more chances for 5 coins </span>
+          or
+          <span onClick={(e) => this.setState({showResult: true})}>Show answer?</span>
+        </div>
     );
   }
   
   renderError(){
-    if(this.state.errorMsg.length) {
-      return (<span className="animated fadeInDown fast">{this.state.errorMsg}</span>)
-    }
+    return (this.state.errorMsg.length) ?
+       (<span className="animated fadeInDown fast" dangerouslySetInnerHTML={{__html: this.state.errorMsg}} ></span>) :
+       (<span className="element-inline-middle soft-hide">No Errors</span>);
   }
 
   renderWonMessage() {
     return (
       <div className="won-message">
-        WOW! You guessed is right!!! It is 
-        <a href={`https://www.thefreedictionary.com/${this.state.word}`} target="_blank">{this.state.word.toUpperCase()}</a>
+        <span className="element-inline-middle">WOW! You guessed is right!!! It is </span>
+        <a className="element-inline-middle link" 
+          href={`https://www.thefreedictionary.com/${this.state.word}`} 
+          target="_blank">
+          {this.state.word.toUpperCase()}
+        </a>
       </div>
     )
   }
@@ -186,7 +213,7 @@ export default class App extends React.Component {
       
       this.setState({
         animateInputClass: 'animated shake fast',
-        errorMsg: ERROR_MSG[errorMsgKey]
+        errorMsg: (ERROR_MSG[errorMsgKey]).replace('{word}', guess)
       });
       setTimeout(() => {this.setState({animateInputClass: 'animated'})}, 600);
       return false;

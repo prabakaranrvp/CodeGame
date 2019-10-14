@@ -1,18 +1,23 @@
 $primary-bg: #282c34;
-$header-bg: #626364;
-$header-secondary: #393a3a;
+// $header-bg: #626364;
+// $header-secondary: #393a3a;
+$header-bg: rgba(255,255,255,0.15);
+$header-secondary: rgba(255,255,255,0.25);
 $link-color: #61dafb;
 
 $cow-color: #c1c106;
 $bull-color: #07b862;
 
 body {
-  background-color: $primary-bg;
+  // background-color: $primary-bg;
   color: #fff;
 }
 
 #root {
   position: fixed;
+  background-image: linear-gradient(to right bottom, #051937, #3e205b, #850464, #c5004c, #eb1212);
+  background-image: linear-gradient(to right bottom, #eb1212, #cd0039, #a0004d, #6c0053, #34004a);
+  background-image: linear-gradient(to right bottom, #ba2929, #a0003a, #7e0043, #570045, #2d023f);
 }
 
 .App {
@@ -46,6 +51,10 @@ body {
   vertical-align: middle;
 }
 
+.soft-hide {
+  visibility: hidden;
+}
+
 
 .App-header {
   background-color: $header-bg;
@@ -61,10 +70,20 @@ body {
     flex: 1;
     // background: rgba(255,255,255,0.1);
     // border-radius: 25px;
-    padding: 0.2em 0;
+    padding: 8px 5px;
     background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 55%,rgba(255, 255, 255, 0.1) 50%,rgba(0,0,0,0) 47%, rgba(0,0,0,0) 48%);
-    font-size: 1.25em;
+    font-size: 10px;
+    line-height: 3px;
+    max-width: 50px;
+    box-sizing: border-box;
   }
+
+  div.coins {
+    font-size: 20px;
+    padding: 18px 5px;
+    background: radial-gradient(circle at center, rgba(117, 99, 8, 0.98) 0%, rgb(253, 188, 3) 55%, rgba(45, 34, 1, 0.98) 50%, rgba(255, 214, 4, 0.97) 47%, rgba(0, 0, 0, 0) 48%);
+  }
+
   div.title {
     flex: 8;
     font-size: 1.5em;
@@ -147,13 +166,14 @@ body {
           box-shadow: 5px 5px 7px 1px rgba(0,0,0,0.8);
           // box-shadow: 3px 4px 6px 1px #444;
           // margin-bottom: 3em;
-          margin-bottom: 1em;
+          // margin-bottom: 1em;
+          transform: translateY(-5px);
           left: 0;
         }
         
         &::placeholder {
-            letter-spacing: 1px;
-            font-size: 0.75em;
+            letter-spacing: 0.5px;
+            font-size: 0.65em;
             text-transform: none;
             text-align: left;
         }
@@ -207,6 +227,10 @@ body {
       color: $bull-color;
     }
     
+  }
+
+  .won-message {
+    font-size: 1.5em;
   }
 }
 
