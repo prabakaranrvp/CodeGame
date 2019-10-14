@@ -1,3 +1,12 @@
+/*
+  TODO:
+    1. Add Medium difficulty (5 letter words)
+    2. Build Letters Panel Component
+    3. Add send button next to textbox
+    4. Add more Specific styling for results, adding chances, won message
+    5. Way to switch back to home page - to chose difficulty
+*/
+
 import React from 'react';
 import Header from './layout/header.js'
 import './App.scss';
