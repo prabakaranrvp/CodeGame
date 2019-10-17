@@ -15,8 +15,8 @@ body {
 
 #root {
   position: fixed;
-  background-image: linear-gradient(to right bottom, #051937, #3e205b, #850464, #c5004c, #eb1212);
-  background-image: linear-gradient(to right bottom, #eb1212, #cd0039, #a0004d, #6c0053, #34004a);
+  // background-image: linear-gradient(to right bottom, #051937, #3e205b, #850464, #c5004c, #eb1212);
+  // background-image: linear-gradient(to right bottom, #eb1212, #cd0039, #a0004d, #6c0053, #34004a);
   background-image: linear-gradient(to right bottom, #ba2929, #a0003a, #7e0043, #570045, #2d023f);
 }
 
@@ -42,17 +42,27 @@ body {
   }
 }
 
-.element-inilne {
+.element-inline {
   display: inline-block;
 }
 
-.element-inilne-middle {
+.element-inline-middle {
   display: inline-block;
   vertical-align: middle;
 }
 
 .soft-hide {
   visibility: hidden;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #d4d6d9;
+  border-radius: 4px;
+  margin: 5px;
+  background: #F5F7F9;
 }
 
 
@@ -140,6 +150,7 @@ body {
   .game__input-container {
     width: 100%;
     margin-bottom: 100px;
+    z-index: 1;
     box-sizing: border-box;
     
       input  {
@@ -254,7 +265,65 @@ body {
 }
 
 
+#letters-panel {
+  width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  opacity: 0.1;
+  transition: 0.15s ease-in-out;
+  z-index: 0;
 
+  .letter {
+    @extend .element-inline-middle;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.25);
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    line-height: 1.5;
+    pointer-events: none;
 
+    &.cow {
+      background: $cow-color;
+      color: #000;
+    }
+    &.bull {
+      background: $bull-color;
+      color: #000;
+    }
+    &.drop {
+      background: red;
+      color: #000;
+      opacity: 0.25;
 
+      &:hover, &:active, &:focus {
+        opacity: 1;
+      }
 
+    }
+  }
+}
+
+.game.toggle-to-letters {
+  .guess-container, .game__input-container {
+    opacity: 0.1;
+  }
+
+  #letters-panel {
+    opacity: 1;
+    z-index: 2;
+
+    .letter {
+      cursor: pointer;
+      pointer-events: initial;
+    }
+  }
+
+}

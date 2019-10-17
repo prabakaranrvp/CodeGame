@@ -1,15 +1,16 @@
-/*
-  TODO:
-    1. Add Medium difficulty (5 letter words)
-    2. Build Letters Panel Component
-    3. Add send button next to textbox
-    4. Add more Specific styling for results, adding chances, won message
-    5. Way to switch back to home page - to chose difficulty
+
+/* TODO: 
+    * Add Medium difficulty (5 letter words)
+    * Add send button next to textbox
+    * Add more Specific styling for results, adding chances, won message
+    * Way to switch back to home page - to chose difficulty
 */
 
 import React from 'react';
 import Header from './layout/header.js'
-import './App.scss';
+import GuessList from './layout/guess-list.js'
+import LettersPanel from './layout/letters-panel.js'
+import './style/app.scss';
 import { DIFFICULTY_MAP, DIFFICULTY_FILE_MAP, ERROR_MSG } from './constants.js'
 
 export default class App extends React.Component {
@@ -28,7 +29,8 @@ export default class App extends React.Component {
       chances: 10,
       showResult: false,
       animateInputClass: 'animated',
-      errorMsg: ''
+      errorMsg: '',
+      togglePanel: false,
     };
   }
   
@@ -67,7 +69,8 @@ export default class App extends React.Component {
         guessedWords: [],
         won: false,
         chances: 10,
-        showResult: false
+        showResult: false,
+        togglePanel: false
       });
 
     }
@@ -77,29 +80,14 @@ export default class App extends React.Component {
     return (
       <div className={"App gamemode-" + (this.state.gameMode?"on":"off")}>
         <Header coins={this.state.coins} onStart={(difficulty) => {this.setGameMode(difficulty)}} reloadGame={()=>this.reloadGame()} />
-        <div className="game">
+        <div className={`game ${(this.state.togglePanel)?'toggle-to-letters':null}`}>
             <div className="dummy"></div>
-            <div className="guess-container" >
-              {this.state.guessedWords.map((word, i) => {
-                return (
-                  <div key={i} className="guess" >
-                      <span className="element-inline-middle guess-result guess-cow">
-                        cow - {this.guessResults[word].cow}
-                      </span>
-                      <span className = "element-inline-middle guess-word"> 
-                        {word} 
-                      </span>
-                      <span className="element-inline-middle guess-result guess-bull">
-                        {this.guessResults[word].bull} - bull 
-                      </span>
-                      
-                  </div>
-                )
-              })}
-            </div>
-          
-          {this.state.won? this.renderWonMessage() : this.renderInputContainer()}
+            <LettersPanel results={this.guessResults} />
+            <GuessList words={this.state.guessedWords} results={this.guessResults}  />
+            {this.state.won? this.renderWonMessage() : this.renderInputContainer()}
+            <button className="btn" onClick={(e) => this.setState({togglePanel: !this.state.togglePanel})}>Show Panel</button>
         </div>
+        <div id="wormhole" />
       </div>
     );
   }
@@ -220,9 +208,14 @@ export default class App extends React.Component {
         }
       }
       
+      let errorMsg = ERROR_MSG[errorMsgKey];
+      errorMsg = (typeof errorMsg === 'string') ? 
+                    errorMsg.replace('{word}', guess) : 
+                    errorMsg[this.state.difficulty];
+
       this.setState({
         animateInputClass: 'animated shake fast',
-        errorMsg: (ERROR_MSG[errorMsgKey]).replace('{word}', guess)
+        errorMsg: errorMsg
       });
       setTimeout(() => {this.setState({animateInputClass: 'animated'})}, 600);
       return false;

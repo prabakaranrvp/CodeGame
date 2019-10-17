@@ -21,8 +21,11 @@ const ERROR_MSG = {
   'validWord': 'Not a valid word. <a class="link" target="_blank" href="mailto:support@codegame.in?subject=Add%20missing%20word%20-%20{word}&body=Hi,%20Please%20add%20the%20missing%20word">Report</a>'
 };
 
+const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
 export {
   DIFFICULTY_MAP,
   DIFFICULTY_FILE_MAP,
-  ERROR_MSG
+  ERROR_MSG,
+  LETTERS
 };
