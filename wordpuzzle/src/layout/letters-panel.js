@@ -4,7 +4,7 @@ import Modal from './modal.js'
 import '../style/app.scss';
 import { LETTERS } from '../constants.js'
 
-// TODO: Styles for Panel Switch button, model buttons and responsive layout
+// TODO: Styles for Panel Switch button and responsive layout
 
 export default class LettersPanel extends React.Component {
 
@@ -78,7 +78,8 @@ export default class LettersPanel extends React.Component {
           onClose={(e) => this.setState({modalActive: false})}>
           <button className="btn cow" onClick={(e) => this.updateLetter('cow')}>Cow</button>
           <button className="btn bull" onClick={(e) => this.updateLetter('bull')}>Bull</button>
-          <button className="btn drop" onClick={(e) => this.updateLetter('drop')}>Removed</button>
+          <button className="btn drop" onClick={(e) => this.updateLetter('drop')}>Reject</button>
+          <button className="btn" onClick={(e) => this.removeLetterMark()}>Remove Marking</button>
         </Modal>
       );
     }
@@ -94,6 +95,15 @@ export default class LettersPanel extends React.Component {
   updateLetter(className) {
     let letters = this.state.letters;
     letters[this.state.currentValue] = ['forced', className];
+    this.setState({
+      letters: letters,
+      modalActive: false
+    });
+  }
+
+  removeLetterMark() {
+    let letters = this.state.letters;
+    letters[this.state.currentValue] = [];
     this.setState({
       letters: letters,
       modalActive: false

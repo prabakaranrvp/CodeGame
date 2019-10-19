@@ -1,15 +1,14 @@
 
 /* TODO: 
     * Add Medium difficulty (5 letter words)
-    * Add send button next to textbox
-    * Add more Specific styling for results, adding chances, won message
-    * Way to switch back to home page - to chose difficulty
+    * Add more Specific animation styling won message
 */
 
 import React from 'react';
 import Header from './layout/header.js'
 import GuessList from './layout/guess-list.js'
 import LettersPanel from './layout/letters-panel.js'
+import ReplyAndResponse from './layout/reply-and-response.js';
 import './style/app.scss';
 import { DIFFICULTY_MAP, DIFFICULTY_FILE_MAP, ERROR_MSG } from './constants.js'
 
@@ -31,6 +30,7 @@ export default class App extends React.Component {
       animateInputClass: 'animated',
       errorMsg: '',
       togglePanel: false,
+      animateAddIcon: false,
     };
   }
   
@@ -50,7 +50,7 @@ export default class App extends React.Component {
     return (this.words[parseInt(Math.random() * this.words.length)]).toLowerCase();
   }
   
-  reloadGame() {
+  reloadGame(gameMode) {
     let {won, chances, guessedWords} = this.state;
     let remainingChances = chances - this.state.guessedWords.length;
 
@@ -70,106 +70,48 @@ export default class App extends React.Component {
         won: false,
         chances: 10,
         showResult: false,
-        togglePanel: false
+        togglePanel: false,
+        gameMode: (gameMode !== undefined)?gameMode:true
       });
 
     }
+  }
+
+  updateSingleState(stateProp, stateVal) {
+    let stateJSON = {};
+    stateJSON[stateProp] = stateVal;
+    this.setState(stateJSON);
+  }
+
+  updateStateJson(stateJSON) {
+    this.setState(stateJSON);
   }
   
   render() {
     return (
       <div className={"App gamemode-" + (this.state.gameMode?"on":"off")}>
-        <Header coins={this.state.coins} onStart={(difficulty) => {this.setGameMode(difficulty)}} reloadGame={()=>this.reloadGame()} />
+        <Header 
+          coins={this.state.coins} 
+          onStart={(difficulty) => {this.setGameMode(difficulty)}} 
+          reloadGame={(arg)=>this.reloadGame(arg)}
+          updateSingleState={(stateProp, stateVal) => this.updateSingleState(stateProp, stateVal)} />
         <div className={`game ${(this.state.togglePanel)?'toggle-to-letters':null}`}>
             <div className="dummy"></div>
             <LettersPanel results={this.guessResults} />
             <GuessList words={this.state.guessedWords} results={this.guessResults}  />
-            {this.state.won? this.renderWonMessage() : this.renderInputContainer()}
-            <button className="btn" onClick={(e) => this.setState({togglePanel: !this.state.togglePanel})}>Show Panel</button>
+
+            <ReplyAndResponse 
+              addGuess={(e) => this.addGuess(e)}
+              reloadGame={() => this.reloadGame()}
+              updateSingleState={(stateProp, stateVal) => this.updateSingleState(stateProp, stateVal)}
+              updateStateJson={(stateJSON) => this.updateStateJson(stateJSON)}
+              addChance={() => this.addChance()}
+              {...this.state}
+            />
         </div>
         <div id="wormhole" />
       </div>
     );
-  }
-
-  renderInputContainer() {
-    let chances = this.state.chances - this.state.guessedWords.length;
-
-    let chancesText = (<label htmlFor="txt-guess">
-                        You have <strong>{chances}</strong> chances left
-                      </label>);
-
-    if(chances === 0)
-      chancesText = (<label>You have used all your chances</label>);
-
-    return (
-      <div className="game__input-container">
-        {chancesText}
-        {this.renderInput(chances)}
-        {this.renderError()}
-      </div>
-    );
-  }
-  
-  renderInput(chances) {
-    let maxLength = DIFFICULTY_MAP[this.state.difficulty];
-    if(chances > 0) {
-        return (
-          <input id="txt-guess" 
-            className={this.state.animateInputClass} 
-            type="text" 
-            autoComplete="off" 
-            autoFocus={true} 
-            maxLength={maxLength} 
-            placeholder={`Guess ${maxLength} letter word`}
-            onKeyUp={(e) => this.addGuess(e)} />)
-        ;
-    } else if (this.state.coins >= 5 && !this.state.showResult) {
-      return this.renderAddChances();
-    } else {
-      return this.renderResult();
-    }
-  }
-
-  renderAddChances() {
-    return (
-        <div> 
-          <span onClick={(e) => this.addChance()}>Add 5 more chances for 5 coins </span>
-          or
-          <span onClick={(e) => this.setState({showResult: true})}>Show answer?</span>
-        </div>
-    );
-  }
-  
-  renderError(){
-    return (this.state.errorMsg.length) ?
-       (<span className="animated fadeInDown fast" dangerouslySetInnerHTML={{__html: this.state.errorMsg}} ></span>) :
-       (<span className="element-inline-middle soft-hide">No Errors</span>);
-  }
-
-  renderWonMessage() {
-    return (
-      <div className="won-message">
-        <span className="element-inline-middle">WOW! You guessed is right!!! It is </span>
-        <a className="element-inline-middle link" 
-          href={`https://www.thefreedictionary.com/${this.state.word}`} 
-          target="_blank">
-          {this.state.word.toUpperCase()}
-        </a>
-      </div>
-    )
-  }
-
-  renderResult() {
-    return (
-      <div className="result">
-        <span className="element-inline-middle">You missed your chances! The word is </span>
-        <a className="element-inline-middle" href={`https://www.thefreedictionary.com/${this.state.word}`} target="_blank">
-          {this.state.word.toUpperCase()}
-        </a>
-        <div onClick={(e) => this.reloadGame()}>Retry again?</div>
-      </div>
-    )
   }
 
   componentDidUpdate() {
@@ -178,15 +120,16 @@ export default class App extends React.Component {
     }, 100);
   }
   
-  addGuess(e) {
-    if(e.keyCode === 13) {
-      let currGuess = document.getElementById('txt-guess').value.toLowerCase();
-      if(this.validateGuess(currGuess)) {
-        this.getBullCow(currGuess);
+  addGuess() {
+    let currGuess = document.getElementById('txt-guess').value.toLowerCase();
+    if(this.validateGuess(currGuess)) {
+      if(this.getBullCow(currGuess)) {
         let guessedWords = this.state.guessedWords;
         guessedWords.push(currGuess);
         this.setState({
-          guessedWords: guessedWords
+          guessedWords: guessedWords,
+          animateAddIcon: true,
+          togglePanel: false
         })
         document.getElementById('txt-guess').value = '';
       }
@@ -215,7 +158,8 @@ export default class App extends React.Component {
 
       this.setState({
         animateInputClass: 'animated shake fast',
-        errorMsg: errorMsg
+        errorMsg: errorMsg,
+        togglePanel: false
       });
       setTimeout(() => {this.setState({animateInputClass: 'animated'})}, 600);
       return false;
@@ -249,6 +193,7 @@ export default class App extends React.Component {
           coins: (this.state.coins + 5)
         });
         this.updateCoinsInfo(this.state.coins + 5);
+        return false;
     }
     for(let i=0; i<len; i++) {
         // Check for Bulls
@@ -260,6 +205,7 @@ export default class App extends React.Component {
             cow++;
     }
     this.guessResults[guessTxt] = {bull: bull, cow: cow};
+    return true;
   }
 
   // Adding Changes using Coins - 5 for 5

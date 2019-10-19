@@ -9,6 +9,8 @@ export default class Modal extends React.Component {
 
     this.el = this.props.el || document.getElementById('wormhole');
     this.el.className += ' modal-container-active';
+    this.closeOnEsc = this.closeOnEsc.bind(this);
+    document.addEventListener('keydown', this.closeOnEsc, false);
   }
 
   render() {
@@ -19,7 +21,7 @@ export default class Modal extends React.Component {
     return (
       <div>
         <div className="modal-overlay" onClick={(e) => this.closeOnOverlay()}></div>
-        <div className='modal' >
+        <div className={`modal ${this.props.className}`} >
           <div className='modal-header'>{this.props.title}</div>
           <div className='modal-body'>
             {this.props.children}
@@ -51,7 +53,14 @@ export default class Modal extends React.Component {
     }
   }
 
+  closeOnEsc(e) {
+    if(e.keyCode === 27 && typeof this.props.onClose === 'function') {
+      this.props.onClose(e);
+    }
+  }
+
   componentWillUnmount(){
+    document.removeEventListener('keydown', this.closeOnEsc, false);
     this.el.className = this.el.className.replace(' modal-container-active','');
   }
 }

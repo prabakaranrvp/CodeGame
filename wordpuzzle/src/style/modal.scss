@@ -1,3 +1,5 @@
+@import 'utilities.scss';
+
 .modal-container-active {
   position: fixed;
   top: 0;
@@ -26,4 +28,32 @@
   color: #000;
   padding: 10px;
   border-radius: 4px;
+  width: 75%;
+  max-width: 400px;
+
+  .cow {
+    @extend .cow-bg;
+  }
+  .bull {
+    @extend .bull-bg;
+  }
+  .drop {
+    background: rgba(255, 0, 0, 0.7);
+  }
+}
+
+.modal-header {
+  font-weight: bold;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.modal-footer {
+  margin-top: 15px;
+
+  &:empty {
+    display: none;
+  }
 }
