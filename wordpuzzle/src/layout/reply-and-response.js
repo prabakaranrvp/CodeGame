@@ -87,9 +87,10 @@ export default class ReplyAndResponse extends React.Component {
         <span className="element-inline-middle">WOW! You guessed is right!!! It is </span>
         <a className="element-inline-middle link animated flash" 
           href={`https://www.thefreedictionary.com/${this.props.word}`} 
-          target="_blank">
+          target="_blank" rel="noopener noreferrer" >
           {this.props.word.toUpperCase()}
         </a>
+        <div className="link" onClick={(e) => this.props.reloadGame()}>Play again</div>
       </div>
     )
   }
@@ -101,7 +102,7 @@ export default class ReplyAndResponse extends React.Component {
         <a className="result link" href={`https://www.thefreedictionary.com/${this.props.word}`} target="_blank">
           {this.props.word.toUpperCase()}
         </a>
-        <div className="link" onClick={(e) => this.props.reloadGame()}>Retry again?</div>
+        <div className="link" onClick={(e) => this.props.reloadGame()}>Retry again</div>
       </div>
     )
   }

@@ -35,7 +35,7 @@ export default class Header extends React.Component {
           onClose={(e) => this.setState({modalActive: false})}>
           <div onClick={() => this.home()}>Home</div>
           <div onClick={() => this.reload()}>Reload</div>
-          <div onClick={() => this.showLetters()}>Show Letters</div>
+          <div onClick={() => this.showLetters()} className="hide-on-big">{(this.props.togglePanel)? 'Hide' : 'Show'} Letters</div>
         </Modal>
       );
     }
@@ -53,6 +53,6 @@ export default class Header extends React.Component {
 
   showLetters() {
     this.setState({modalActive: false});
-    this.props.updateSingleState('togglePanel', true);
+    this.props.updateSingleState('togglePanel', !this.props.togglePanel);
   }
 }

@@ -1,0 +1,77 @@
+/* For iPad and Laptops */
+@media (min-width: 600px) {
+
+  .hide-on-big {
+    display: none;
+  }
+
+  .game {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    flex-direction: row-reverse;
+
+    .dummy {
+      display: none;
+    }
+
+    #letters-panel {
+      width: auto;
+      max-width: none;
+      opacity: 1;
+      position: initial;
+      box-sizing: border-box;
+      flex: 3;
+      transform: translateX(0);
+      z-index: 2;
+      
+      .letter {
+        pointer-events: all;
+      }
+    }
+
+    .guess-container {
+      flex: 3;
+    }
+
+    &__input-container {
+      position: absolute;
+      bottom: 45px;
+      margin: 0;
+    }
+
+    .dummy-big {
+      flex: 3;
+    }
+  }
+}
+
+/* For Mobile */
+@media (max-width: 600px) {
+  .game {
+    max-width: 400px;
+    margin: 0 auto;
+    flex-direction: column;
+
+    .dummy-big {
+      display: none;
+    }
+
+    #letters-panel {
+      width: 300px;
+      max-width: none;
+      opacity: 0.1;
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+    }
+
+    &__input-container {
+      margin-bottom: 100px;
+    }
+
+    .dummy-big {
+      display: none;
+    }
+  }
+}

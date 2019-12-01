@@ -18,7 +18,7 @@ const ERROR_MSG = {
     'medium': 'Please enter a 5 letter word',
     'hard': 'Please enter a 6 letter word',
   },
-  'validWord': 'Not a valid word. <a class="link" target="_blank" href="mailto:support@codegame.in?subject=Add%20missing%20word%20-%20{word}&body=Hi,%20Please%20add%20the%20missing%20word">Report</a>'
+  'validWord': 'Not a valid word. <a class="link" target="_blank" rel="noopener noreferrer" href="mailto:support@codegame.in?subject=Add%20missing%20word%20-%20{word}&body=Hi,%20Please%20add%20the%20missing%20word">Report</a>'
 };
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];

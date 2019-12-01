@@ -94,6 +94,7 @@ export default class App extends React.Component {
           coins={this.state.coins} 
           onStart={(difficulty) => {this.setGameMode(difficulty)}} 
           reloadGame={(arg)=>this.reloadGame(arg)}
+          togglePanel={this.state.togglePanel}
           updateSingleState={(stateProp, stateVal) => this.updateSingleState(stateProp, stateVal)} />
         <div className={`game ${(this.state.togglePanel)?'toggle-to-letters':null}`}>
             <div className="dummy"></div>
@@ -108,6 +109,8 @@ export default class App extends React.Component {
               addChance={() => this.addChance()}
               {...this.state}
             />
+
+            <div className="dummy-big"></div>
         </div>
         <div id="wormhole" />
       </div>
