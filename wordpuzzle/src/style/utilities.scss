@@ -69,9 +69,17 @@ button {
 .cow-bg {
   background: $cow-color;
   color: #000;
+
+  &:hover {
+    background-color: darken($cow-color, 10%);
+  }
 }
 
 .bull-bg {
   background: $bull-color;
   color: #000;
+
+  &:hover {
+    background-color: darken($bull-color, 10%);
+  }
 }

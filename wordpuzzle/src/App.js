@@ -47,7 +47,8 @@ export default class App extends React.Component {
   }
   
   setWord() {
-    return (this.words[parseInt(Math.random() * this.words.length)]).toLowerCase();
+    // return (this.words[parseInt(Math.random() * this.words.length)]).toLowerCase();
+    return 'keep'
   }
   
   reloadGame(gameMode) {
@@ -199,13 +200,20 @@ export default class App extends React.Component {
         return false;
     }
     for(let i=0; i<len; i++) {
+      let letterBulled = false, stateWord = this.state.word;
         // Check for Bulls
-        if(guess[i] === this.state.word[i])
-            bull++;
-
+        if(guess[i] === stateWord[i]) {
+          bull++;
+          letterBulled = true;
+        }
+          
         // Check for Cows - If the letter is already added as Bull, then ignore
-        if(this.state.word.indexOf(guess[i]) !== -1 && this.state.word.indexOf(guess[i]) !== i)
+        if(stateWord.indexOf(guess[i]) !== -1 && !letterBulled) {
+          cow++;
+          // To Check for mulitple letters => Currenly supports only 2 letters
+          if(stateWord.indexOf(guess[i]) !== stateWord.lastIndexOf(guess[i]))
             cow++;
+        }    
     }
     this.guessResults[guessTxt] = {bull: bull, cow: cow};
     return true;

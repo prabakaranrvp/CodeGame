@@ -17,19 +17,23 @@
   height: 100%;
   background: #000;
   opacity: 0.8;
+  transition: 0.1s ease-in-out;
 }
 
 .modal {
   position: absolute;
   top: 25%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-100px);
   background: #fff;
   color: #000;
   padding: 10px;
   border-radius: 4px;
   width: 75%;
   max-width: 400px;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  animation: 0.2s ease-in-out loadModal forwards;
 
   .cow {
     @extend .cow-bg;
@@ -55,5 +59,17 @@
 
   &:empty {
     display: none;
+  }
+}
+
+@keyframes loadModal {
+  0%{
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0px);
   }
 }

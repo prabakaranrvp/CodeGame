@@ -27,6 +27,10 @@
       
       .letter {
         pointer-events: all;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
@@ -39,10 +43,28 @@
       position: absolute;
       bottom: 45px;
       margin: 0;
+
+      .reply-container .btn-toggle-panel {
+        display: none;
+      }
+    
+      #txt-guess {
+        max-width: 8.5em;
+        float: left;
+        border-top-left-radius: 4px;
+      }
     }
 
     .dummy-big {
       flex: 3;
+    }
+  }
+
+  .modal.header-menu .modal-body div{
+    transition: 0.2s linear;
+
+    &:hover {
+      color: rgba(0,0,0,0.5);
     }
   }
 }
