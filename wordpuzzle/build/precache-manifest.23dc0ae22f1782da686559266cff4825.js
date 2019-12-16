@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3a5f95817ceb03ef87e341c1befa40c9",
+    "revision": "3538822443d0a95fab2fb0c8c647e543",
     "url": "/wordpuzzle/build/index.html"
   },
   {
-    "revision": "9a12b4d516588a923a46",
-    "url": "/wordpuzzle/build/static/css/main.a7e498a0.chunk.css"
+    "revision": "ac7e6c68b10154411e8f",
+    "url": "/wordpuzzle/build/static/css/main.195d68b2.chunk.css"
   },
   {
     "revision": "92c699980c3ada4f0725",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wordpuzzle/build/static/js/4.4026d0f1.chunk.js"
   },
   {
-    "revision": "9a12b4d516588a923a46",
+    "revision": "ac7e6c68b10154411e8f",
     "url": "/wordpuzzle/build/static/js/main.868bd5e9.chunk.js"
   },
   {
