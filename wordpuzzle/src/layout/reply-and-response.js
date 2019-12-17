@@ -84,7 +84,7 @@ export default class ReplyAndResponse extends React.Component {
   renderWonMessage() {
     return (
       <div className="won-message">
-        <span className="element-inline-middle">WOW! You guessed is right!!! It is </span>
+        <span className="element-inline-middle">WOW! You guessed is right!!! It is&nbsp;</span>
         <a className="element-inline-middle link animated flash" 
           href={`https://www.thefreedictionary.com/${this.props.word}`} 
           target="_blank" rel="noopener noreferrer" >

@@ -58,6 +58,19 @@
     .dummy-big {
       flex: 3;
     }
+
+    .won-message {
+      position: absolute;
+      bottom: 5px;
+      margin: 0;
+      width: 100%;
+      padding: 0 25%;
+      box-sizing: border-box;
+
+      .link.animated {
+        font-weight: bold;
+      }
+    }
   }
 
   .modal.header-menu .modal-body div{
