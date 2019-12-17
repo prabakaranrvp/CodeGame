@@ -47,8 +47,7 @@ export default class App extends React.Component {
   }
   
   setWord() {
-    // return (this.words[parseInt(Math.random() * this.words.length)]).toLowerCase();
-    return 'keep'
+    return (this.words[parseInt(Math.random() * this.words.length)]).toLowerCase();
   }
   
   reloadGame(gameMode) {
