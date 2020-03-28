@@ -37,6 +37,18 @@
     display: none;
   }
 
+  #how-to-btn-container {
+    position: absolute;
+    bottom: 24px;
+
+    button.btn-how-to {
+      background: transparent;
+      border: none;
+      padding: 4px 16px;
+      font-size: 1em;
+    }
+  }
+
   div.menu {
     background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uO3RleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjtpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyIgdmlld0JveD0iMCAwIDc1MSA1OTIiIHg9IjBweCIgeT0iMHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgCiAgICAuZmlsMCB7ZmlsbDojRkZGRkZGfQogICAKICA8L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTYwIDBsNjMxIDBjMzMsMCA2MCwyNyA2MCw2MCAwLDMzIC0yNyw2MCAtNjAsNjBsLTYzMSAwYy0zMywwIC02MCwtMjcgLTYwLC02MCAwLC0zMyAyNywtNjAgNjAsLTYweiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJmaWwwIiBkPSJNNjAgMjM2bDYzMSAwYzMzLDAgNjAsMjcgNjAsNjAgMCwzMyAtMjcsNjAgLTYwLDYwbC02MzEgMGMtMzMsMCAtNjAsLTI3IC02MCwtNjAgMCwtMzMgMjcsLTYwIDYwLC02MHoiPjwvcGF0aD48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTYwIDQ3Mmw2MzEgMGMzMywwIDYwLDI3IDYwLDYwIDAsMzMgLTI3LDYwIC02MCw2MGwtNjMxIDBjLTMzLDAgLTYwLC0yNyAtNjAsLTYwIDAsLTMzIDI3LC02MCA2MCwtNjB6Ij48L3BhdGg+PC9nPjwvc3ZnPg==");
     padding: 18px 4px;
@@ -364,6 +376,19 @@
     }
   }
 
+}
+
+.modal.how-to-modal {
+  width: auto;
+  padding: 16px 24px;
+  max-width: 90%;
+  top: 7%;
+  max-height: 80%;
+  overflow: scroll;
+  
+  .red{
+    color: red;
+  }
 }
 
 
