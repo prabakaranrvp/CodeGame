@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://codegame.in/wordpuzzle/build",
   "dependencies": {
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.8.6",
